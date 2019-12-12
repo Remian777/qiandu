@@ -8,6 +8,8 @@ from django.contrib.auth.models import AbstractUser
 #用户表
 class User(AbstractUser):
     mobile = models.IntegerField(verbose_name='手机号')
+    user_icon = models.FileField(upload_to='user_icon/',default='user_icon/default.jpg')
+    gender = models.IntegerField(choices=((0,'男'),(1,'女')))
     is_vip = models.BooleanField(default=False,verbose_name='是否是vip')
     is_delete = models.BooleanField(default=False,verbose_name='是否注销')
     create_time = models.DateTimeField(auto_now_add=True,verbose_name='创建时间')
