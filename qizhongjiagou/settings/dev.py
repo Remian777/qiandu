@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'user',
     'pay',
     'fiction',
+    'home',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -84,10 +86,15 @@ WSGI_APPLICATION = 'qizhongjiagou.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'fiction',
+        'USER':'root',
+        'PASSWORD':'q',
     }
 }
 
@@ -130,6 +137,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+AUTH_USER_MODEL = 'user.User'
 
 LOGGING = {
     'version': 1,
