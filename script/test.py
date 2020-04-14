@@ -6,9 +6,9 @@
 
 import os,sys,django
 
-from qizhongjiagou.settings import dev
+from qiandu.settings import dev
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "qizhongjiagou.settings.dev")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "qiandu.settings.dev")
 django.setup()
 print(dev.BASE_DIR)
 
