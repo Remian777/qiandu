@@ -1,3 +1,10 @@
-from django.test import TestCase
 
-# Create your tests here.
+
+
+
+import time,datetime
+
+
+print(round(time.time()*10000))
+
+print(datetime.datetime.now(f))

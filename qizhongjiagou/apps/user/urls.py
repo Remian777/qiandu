@@ -1,4 +1,4 @@
-"""qizhongjiagou URL Configuration
+"""qiandu URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -14,7 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path,include
+from . import views
 
 urlpatterns = [
-
+    path('register',views.RegisterAPIView.as_view()),
+    path('sendsms',views.SMSAPIView.as_view()),
+    path('login',views.LoginAPIView.as_view()),
+    path('mobilelogin',views.LoginMobileAPIView.as_view()),
+    path('checkmobile',views.CheckRegisterAPIView.as_view()),
+    path('userinfo',views.UserInfoAPIView.as_view()),
+    path('payinfo',views.UserPayInfoAPIView.as_view()),
 ]

@@ -1,4 +1,4 @@
-"""qizhongjiagou URL Configuration
+"""qiandu URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -13,10 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path,include
+# from django.contrib import admin
+import xadmin
+xadmin.autodiscover()
+from xadmin.plugins import xversion
+xversion.register_models()
+from django.urls import path,include,re_path
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user/',include('user.urls'))
+    path('xadmin/', xadmin.site.urls),
+    path('novel/',include('novel.urls')),
+    path('pay/',include('pay.urls')),
+    path('user/',include('user.urls')),
+    path('home/',include('home.urls')),
+    re_path('^media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
+
 ]
